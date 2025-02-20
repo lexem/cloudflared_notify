@@ -45,3 +45,6 @@ else
          -d text="Cannot update URL for $LOCAL_APP"
 
 fi
+
+# Бесконечный цикл, чтобы контейнер не завершился
+while true; do sleep 3600; done
