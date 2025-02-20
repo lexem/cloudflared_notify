@@ -1,7 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 
 [ -z "$BOT_TOKEN" ] && echo "Переменная BOT_TOKEN пуста" || echo "Переменная BOT_TOKEN: $BOT_TOKEN"
 [ -z "$CHAT_ID" ] && echo "Переменная CHAT_ID пуста" || echo "Переменная CHAT_ID: $CHAT_ID"
+[ -z "$LOCAL_APP" ] && echo "Переменная LOCAL_APP пуста" || echo "Переменная LOCAL_APP: $LOCAL_APP"
 [ -z "$LOCAL_PORT" ] && echo "Переменная LOCAL_PORT пуста" || echo "Переменная LOCAL_PORT: $LOCAL_PORT"
 
 CLOUDFLARED_LOG="cloudflared.log"
@@ -33,7 +34,7 @@ if [ ! -z "$URL" ]; then
     # Отправляем в Telegram
     curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
          -d chat_id=$CHAT_ID \
-         -d text="Cloudflared Tunnel for OpenWebUI: $URL"
+         -d text="Cloudflared Tunnel for $LOCAL_APP: $URL"
 
 else
     echo "Не удалось получить URL туннеля."
@@ -41,6 +42,6 @@ else
     # Отправляем в Telegram
     curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
          -d chat_id=$CHAT_ID \
-         -d text="Cannot update URL for OpenWebUI."
+         -d text="Cannot update URL for $LOCAL_APP"
 
 fi
