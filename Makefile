@@ -19,6 +19,7 @@ run:
 		-e BOT_TOKEN=$(BOT_TOKEN) \
 		-e CHAT_ID=$(CHAT_ID) \
 		-e LOCAL_APP=$(LOCAL_APP) \
+		-e LOCAL_HOST=$(LOCAL_HOST) \
 		-e LOCAL_PORT=$(LOCAL_PORT) \
 		$(IMAGE_NAME):$(TAG)
 
